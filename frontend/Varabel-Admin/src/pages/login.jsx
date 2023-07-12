@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Form, SideDesign, Alert } from "./loginComponent";
+import { Form, SideDesign } from "./loginComponent";
+import { Alert } from "./mainComponent";
 const Login = () => {
   const [message, setMessage] = useState({
     value: "",

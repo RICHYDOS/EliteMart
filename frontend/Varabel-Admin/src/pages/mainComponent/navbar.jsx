@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useWindowWidth } from "../../dataContext";
-import navImg from "./navImg";
+import { navImg } from "../../constants";
 
 const Navbar = ({ show, setShow, word }) => {
   const [images, setImages] = useState(navImg);
