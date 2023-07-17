@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Instrument serif";
+  scroll-behavior: smooth;
+}
+*::-webkit-scrollbar{
+  display: none;
+}
+
+.input-text {
+  box-sizing: border-box;
+  height: 50px;
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 10px 0px 20px 0px;
+  background-color: white;
+  color: black;
+}
+
+label {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #282828;
+}
+
+.btn {
+  width: 70%;
+  height: 45px;
+  background: #133b5c;
+  color: #ffffff;
+  border: 2px solid #133b5c;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  background: #ffffff;
+  color: #133b5c;
+  transition: all 0.2s ease;
+}
+
+.top{
+  animation: myEntrance 1.5s ease 0s 1 normal forwards;
+}
+
+@keyframes myEntrance {
+	0% {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
