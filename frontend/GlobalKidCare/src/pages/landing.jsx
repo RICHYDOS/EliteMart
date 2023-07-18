@@ -1,17 +1,36 @@
 import { useState, useEffect } from "react";
 import { StarsCanvas } from "../canvas";
 import { motion } from "framer-motion";
-import { scribble, chart, bank, naira, twitter, facebook, instagram, image1, image2, image3, image4 } from "../assets";
+import {
+  scribble,
+  chart,
+  bank,
+  naira,
+  twitter,
+  facebook,
+  instagram,
+  image1,
+  image2,
+  image3,
+  image4,
+} from "../assets";
 import { fadeIn, slideIn, staggerContainer } from "../utils/motion";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import AnimatedNumbers from "react-animated-numbers";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const [fund, setFunds] = useState(12530650);
+  const [num, setNum] = useState(30250);
+
   return (
     <div className="w-full flex flex-col h-fit">
       <div className="bg-primary h-screen flex flex-col items-center justify-center gap-10">
         <div className="w-4/5 h-10 flex items-center justify-center gap-8 z-10 text-white text-[22px]">
-          <p className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500" onClick={() => navigate("/volunteer")}>
+          <p
+            className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500"
+            onClick={() => navigate("/volunteer")}
+          >
             Volunteer
           </p>
           <p className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500">
@@ -21,17 +40,16 @@ const Landing = () => {
             About
           </p>
         </div>
-        <div className="top w-4/5 h-3/5 flex items-center">
+        <div className="top w-4/5 h-3/5 flex items-center flex-col">
           <h1 className="text-white flex items-center font-normal  uppercase text-9xl text-center h-full">
             Global Kids Care
           </h1>
+          
         </div>
       </div>
       <div className="bg-black sm:h-[400px] flex items-center p-3 relative z-0">
         <div className="lg:w-2/4 w-4/5 flex flex-col gap-5 ml-[10%] text-white">
-          <h2 className=" sm:text-[40px] text-[30px]">
-            The Future Is Bright
-          </h2>
+          <h2 className=" sm:text-[40px] text-[30px]">The Future Is Bright</h2>
           <p>
             Welcome to Hope for Kids, where we're shaping a brighter future for
             children worldwide.
@@ -67,7 +85,7 @@ const Landing = () => {
               for these young souls.
             </p>
           </div>
-          <button className="p-3 text-white bg-black rounded-lg hover:bg-slate-600 text-xl sm:w-fit w-4/5">
+          <button className="p-3 text-white bg-black rounded-lg hover:bg-slate-600 text-xl sm:w-fit w-4/5" onClick={() => navigate("/volunteer")}>
             Volunteer Now
           </button>
         </motion.div>
@@ -79,29 +97,59 @@ const Landing = () => {
         viewport={{ once: true, amount: 0.25 }}
         className={`bg-white w-full mx-auto flex lg:flex-row flex-col justify-evenly items-center border-none gap-5 relative z-0 `}
       >
-        <motion.div variants={slideIn("left", "tween", 0.1, 1)}
-          className="max-w-[500px] lg:w-2/5 w-4/5 h-[450px] flex flex-col items-center justify-center gap-10 bg-[#f2f2f2] rounded-lg">
-            <img src={chart} alt="kids helped" className="max-w-[200px] w-[15%]" />
-            <h2 className=" font-semibold text-4xl">5,000</h2>
-            <h2 className="text-xl ">Kids Helped</h2>
-        </motion.div> 
-        <motion.div variants={slideIn("right", "tween", 0.1, 1)}
-          className="max-w-[500px] lg:w-2/5 w-4/5 h-[450px] flex flex-col items-center justify-center gap-10 bg-[#f2f2f2] rounded-lg">
-            <img src={bank} alt="funds raised" className="max-w-[200px] w-[15%]" />
-            <h2 className="flex gap-1 font-normal text-4xl"><img src={naira} />400,000</h2>
-            <h2 className="text-xl ">Funds Raised</h2>
+        <motion.div
+          variants={slideIn("left", "tween", 0.1, 1)}
+          className="max-w-[500px] lg:w-2/5 w-4/5 h-[450px] flex flex-col items-center justify-center gap-10 bg-[#f2f2f2] rounded-lg"
+        >
+          <img
+            src={chart}
+            alt="kids helped"
+            className="max-w-[200px] w-[15%]"
+          />
+          <AnimatedNumbers
+            animateToNumber={num}
+            fontStyle={{ fontSize: 52, }}
+            includeComma
+            configs={(number, index) => {
+              return { mass: 1, tension: 230 * (index + 1), friction: 140 };
+            }}
+          ></AnimatedNumbers>
+          <h2 className="text-xl ">Kids Helped</h2>
+        </motion.div>
+        <motion.div
+          variants={slideIn("right", "tween", 0.1, 1)}
+          className="max-w-[500px] lg:w-2/5 w-4/5 h-[450px] flex flex-col items-center justify-center gap-10 bg-[#f2f2f2] rounded-lg"
+        >
+          <img
+            src={bank}
+            alt="funds raised"
+            className="max-w-[200px] w-[15%]"
+          />
+          <h2 className="flex gap-1 font-normal text-4xl">
+            <img src={naira} />
+            <AnimatedNumbers
+            animateToNumber={fund}
+            fontStyle={{ fontSize: 52, }}
+            includeComma
+            configs={(number, index) => {
+              return { mass: 1, tension: 210 * (index + 1), friction: 140 };
+            }}
+          ></AnimatedNumbers>
+          </h2>
+          <h2 className="text-xl">Funds Raised</h2>
         </motion.div>
       </motion.section>
       <div className="bg-white min-h-[500px] mx-[10%] mt-10 ">
         <h1 className="text-[50px]">Our Impact</h1>
         <p>
-          We are building an inclusive society where every child has equal chances
+          We are building an inclusive society where every child has equal
+          chances
         </p>
         <div className="grid grid-cols-auto gap-[20px] h-max my-5">
-        <img src={image1} className="w-[400px]"/>
-        <img src={image2} className="w-[400px]"/>
-        <img src={image3} className="w-[400px]"/>
-        <img src={image4} className="w-[400px]"/>
+          <img src={image1} className="w-[400px]" />
+          <img src={image2} className="w-[400px]" />
+          <img src={image3} className="w-[400px]" />
+          <img src={image4} className="w-[400px]" />
         </div>
       </div>
       <div className="flex justify-between items-center mx-[10%] my-5">
