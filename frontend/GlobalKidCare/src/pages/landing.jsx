@@ -24,7 +24,7 @@ const Landing = () => {
   const [num, setNum] = useState(30250);
 
   return (
-    <div className="w-full flex flex-col h-fit">
+    <div className="w-full flex flex-col h-fit overflow-hidden">
       <div className="bg-primary h-screen flex flex-col items-center justify-center gap-10">
         <div className="w-4/5 h-10 flex items-center justify-center gap-8 z-10 text-white text-[22px]">
           <p
@@ -63,7 +63,7 @@ const Landing = () => {
             offer a helping hand to those who need it most.
           </p>
         </div>
-        <StarsCanvas />
+        <StarsCanvas color="#fff" />
       </div>
       <motion.section
         variants={staggerContainer()}
