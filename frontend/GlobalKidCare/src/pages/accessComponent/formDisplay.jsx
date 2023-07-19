@@ -2,21 +2,18 @@ import { useState, useEffect } from "react";
 import { FormApi } from "./formApi";
 import { styles } from "../../styles";
 import { useNavigate } from "react-router-dom";
+import { logo, google } from "../../assets";
 
 const Form = ({ setMsg, msg, allow, setAllow }) => {
   const [formCheck, setFormCheck] = useState([]);
   const navigate = useNavigate();
-  const [enable, setEnable] = useState(false);
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [pageName, setPageName] = useState("");
 
   const [formData, setFormData] = useState({
+    Name: "",
     Email: "",
     Password: "",
-  });
-
-  const [data, setData] = useState({
-    password: "",
   });
 
   function Change(event) {
@@ -24,13 +21,6 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
       const { name, value } = event.target;
       return {
         ...prevFormData,
-        [name]: value,
-      };
-    });
-    setData((prevData) => {
-      const { name, value } = event.target;
-      return {
-        ...prevData,
         [name]: value,
       };
     });
@@ -51,7 +41,7 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
       const result = FormApi.Array[0];
       if (result === 200) {
         setMessage("Sign up completed successfully");
-        setPageName("/Login")
+        setAllow(false);
         clearFields();
       } else {
         setMessage(/*"Sorry couldn't sign up."*/ result);
@@ -85,7 +75,7 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
     event.preventDefault();
     if (
       formData.Email !== "" &&
-      data.password !== "" &&
+      formData.Name !== "" &&
       formData.Password !== ""
     ) {
       setAllowSubmit(true);
@@ -98,14 +88,9 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
     setFormData((prevData) => {
       return {
         ...prevData,
+        Name: "",
         Email: "",
         Password: "",
-      };
-    });
-    setData((prevData) => {
-      return {
-        ...prevData,
-        password: "",
       };
     });
   }
@@ -121,90 +106,96 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
   }
 
   useEffect(() => {
-    if (formData.Password === data.password) {
-      setEnable(true);
-    } else {
-      setEnable(false);
-    }
-  }, [formData]);
-
-  useEffect(() => {
     if (!msg.show) {
       navigate(pageName, { replace: true });
     }
-    },
-    [msg.show]
-  );
+  }, [msg.show]);
 
   const headings = allow ? (
-    <div>
-      <h1 className={`${styles.heroHeadText}`}>Sign Up!</h1>
-      <p className={`${styles.heroSubText} `}>Sign up to access the website</p>
+    <div className="mt-10">
+      <h1 className={`${styles.heroHeadText}`}>Welcome to Global Kids Care!</h1>
+      <p className={`${styles.heroSubText} `}>
+        Enter your details to get started
+      </p>
     </div>
   ) : (
-    <div>
+    <div className="mt-10">
       <h1 className={`${styles.heroHeadText}`}>Welcome Back!</h1>
-      <p className={`${styles.heroSubText} `}>Login to access the website</p>
+      <p className={`${styles.heroSubText} `}>
+        Enter details to continue to website
+      </p>
     </div>
   );
 
   return (
-    <form
-      onSubmit={allow ? signupSubmit : loginSubmit}
-      className={`sm:w-[550px] w-full ss:mx-2 sm:mx-0 bg-white shadow-card rounded-2xl ${styles.padding}`}
-    >
-      {headings}
-      <div className="mt-[40px] w-full">
-        <label>Email</label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          onChange={Change}
-          className="input-text block w-full xs:w-3/4"
-          name="Email"
-          value={formData.Email}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          onChange={Change}
-          className="input-text block w-full xs:w-3/4"
-          name="Password"
-          value={formData.Password}
-        />
-        <label className={`${allow ? "block" : "hidden"} w-full xs:w-3/4`}>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          placeholder="Confirm the above Password"
-          className={`${allow ? "block" : "hidden"} input-text w-full xs:w-3/4`}
-          onChange={Change}
-          name="password"
-          value={data.password}
-        />
-        {allow && enable === false && (
-          <span style={{ color: "red" }}>Passwords do not match</span>
-        )}
-        <button className="btn">{allow ? "Sign up" : "Login"}</button>
-        {allow ? (
-          <a
-            onClick={() => setAllow(false)}
-            className="my-[20px] text-[#0b2a43] w-fit block underline cursor-pointer"
-          >
-            Already have an account? Login!
-          </a>
-        ) : (
-          <a
-            onClick={() => setAllow(true)}
-            className="my-[20px] text-[#0b2a43] w-fit block underline cursor-pointer"
-          >
-            Don't have an account? Sign up!
-          </a>
-        )}
-      </div>
-    </form>
+    <div className="flex rounded-2xl shadow-card bg-white relative">
+      <form
+        className={`sm:w-[550px] w-full ss:mx-2 sm:mx-0 ${styles.padding}`}
+      >
+        <img src={logo} className="h-5 inset-0 absolute m-5 w-[140px]" />
+        {headings}
+        <div className="mt-5 flex flex-col gap-5">
+          <button className="border-2 border-[#28AEA3] rounded-2xl p-2 flex gap-1 w-[180px]"><img src={google} className="w-6"/>Log In with Google</button>
+          <div className="w-full flex items-center justify-center gap-1"><hr className="w-[45%] border-[#28AEA3]"/>OR<hr className="w-[45%] border-[#28AEA3]" /></div>
+        </div>
+        <div className="mt-[20px] w-full">
+          <label className={`${allow ? "block" : "hidden"} w-full xs:w-3/4`}>
+            Full Name
+          </label>
+          <input
+            type="text"
+            placeholder="Enter Full Name"
+            onChange={Change}
+            className={`${
+              allow ? "block" : "hidden"
+            } input-text w-full xs:w-3/4`}
+            name="Name"
+            value={formData.Name}
+          />
+          <label>Email</label>
+          <input
+            type="text"
+            placeholder="Enter Email"
+            onChange={Change}
+            className="input-text block w-full xs:w-3/4"
+            name="Email"
+            value={formData.Email}
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            onChange={Change}
+            className="input-text block w-full xs:w-3/4"
+            name="Password"
+            value={formData.Password}
+          />
+          <button className="btn" onClick={allow ? signupSubmit : loginSubmit}>{allow ? "Sign up" : "Login"}</button>
+          {allow ? (
+            <div className="flex my-[20px] gap-1">
+              Have an account?
+              <a
+                onClick={() => setAllow(false)}
+                className=" text-[#28AEA3] font-medium w-fit block cursor-pointer"
+              >
+                Sign in
+              </a>
+            </div>
+          ) : (
+            <div className="flex my-[20px] gap-1">
+              Don't Have an account?
+              <a
+                onClick={() => setAllow(true)}
+                className=" text-[#28AEA3] font-medium w-fit block cursor-pointer"
+              >
+                Sign up
+              </a>
+            </div>
+          )}
+        </div>
+      </form>
+      <div className="w-[385px] bg-cover bg-no-repeat bg-access-pattern"></div>
+    </div>
   );
 };
 

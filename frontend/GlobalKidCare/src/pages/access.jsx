@@ -8,7 +8,7 @@ const Access = () => {
     show: false,
   });
 
-  const [allow, setAllow] = useState(false)
+  const [allow, setAllow] = useState(true)
   return (
     <div className="relative w-full h-screen">
       <div
