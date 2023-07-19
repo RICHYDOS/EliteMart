@@ -3,6 +3,9 @@ import { FormApi } from "./formApi";
 import { styles } from "../../styles";
 import { useNavigate } from "react-router-dom";
 import { logo, google } from "../../assets";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+
 
 const Form = ({ setMsg, msg, allow, setAllow }) => {
   const [formCheck, setFormCheck] = useState([]);
@@ -111,6 +114,17 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
     }
   }, [msg.show]);
 
+  const login = useGoogleLogin({
+    onSuccess: async response => {
+      const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: {
+          "Authorization": `Bearer ${response.access_token}`
+        }
+      })
+      console.log(res.data)
+    }
+  })
+
   const headings = allow ? (
     <div className="mt-10">
       <h1 className={`${styles.heroHeadText}`}>Welcome to Global Kids Care!</h1>
@@ -128,15 +142,20 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
   );
 
   return (
-    <div className="flex rounded-2xl shadow-card bg-white relative">
-      <form
-        className={`sm:w-[550px] w-full ss:mx-2 sm:mx-0 ${styles.padding}`}
-      >
+    <div className="flex rounded-2xl min-h-[670px] lg:h-[670px] shadow-card bg-white relative lg:flex-row flex-col  overflow-auto">
+      <form className={`md:w-[550px] w-full ss:mx-2 md:mx-0 ${styles.padding}`}>
         <img src={logo} className="h-5 inset-0 absolute m-5 w-[140px]" />
         {headings}
         <div className="mt-5 flex flex-col gap-5">
-          <button className="border-2 border-[#28AEA3] rounded-2xl p-2 flex gap-1 w-[180px]"><img src={google} className="w-6"/>Log In with Google</button>
-          <div className="w-full flex items-center justify-center gap-1"><hr className="w-[45%] border-[#28AEA3]"/>OR<hr className="w-[45%] border-[#28AEA3]" /></div>
+          <button className="border-2 border-[#28AEA3] rounded-2xl p-2 flex gap-1 w-[180px]" onClick={() => login()} >
+            <img src={google} className="w-6" />
+            Log In with Google
+          </button>
+          <div className="w-full flex items-center justify-center gap-1">
+            <hr className="w-[45%] border-[#28AEA3]" />
+            OR
+            <hr className="w-[45%] border-[#28AEA3]" />
+          </div>
         </div>
         <div className="mt-[20px] w-full">
           <label className={`${allow ? "block" : "hidden"} w-full xs:w-3/4`}>
@@ -170,7 +189,9 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
             name="Password"
             value={formData.Password}
           />
-          <button className="btn" onClick={allow ? signupSubmit : loginSubmit}>{allow ? "Sign up" : "Login"}</button>
+          <button className="btn" onClick={allow ? signupSubmit : loginSubmit}>
+            {allow ? "Sign up" : "Login"}
+          </button>
           {allow ? (
             <div className="flex my-[20px] gap-1">
               Have an account?
@@ -194,7 +215,13 @@ const Form = ({ setMsg, msg, allow, setAllow }) => {
           )}
         </div>
       </form>
-      <div className="w-[385px] bg-cover bg-no-repeat bg-access-pattern"></div>
+      <div className="lg:w-[385px] w-full lg:h-full h-[500px] bg-cover bg-no-repeat bg-access-pattern flex flex-col justify-center items-center gap-5">
+        <h1 className="text-white w-4/5 text-[30px] font-medium text-center">Join other volunteers in this exercise as we give to charity.</h1>
+        <h2 className="text-white w-4/5 text-md text-center font-normal">
+          ‘we can’t help everyone, but everyone can help someone’ -Ronald Reagan
+        </h2>
+        <button className="btn">Gallery</button>
+      </div>
     </div>
   );
 };
