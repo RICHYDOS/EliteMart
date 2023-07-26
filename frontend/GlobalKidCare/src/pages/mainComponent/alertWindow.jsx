@@ -9,7 +9,7 @@ const Alert = ({msg, setMsg}) => {
             <div className="text-[20px]">
                 <h2>{msg.value}</h2>
             </div>
-            <div className="w-[60px] h-[35px] bg-tertiary text-white flex items-center justify-center rounded-lg hover:bg-[#1d4656]">
+            <div className="w-[60px] h-[35px] bg-tertiary text-white flex items-center justify-center rounded-lg hover:bg-[#73907c]">
                 <button className="w-full h-full" onClick={() => setMsg(true)}>OK</button>
             </div>
         </div>
