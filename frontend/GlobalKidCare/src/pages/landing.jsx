@@ -33,15 +33,15 @@ const Landing = () => {
           >
             Volunteer
           </p>
-          <p className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500">
+          <p className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500" onClick={() => navigate("/donation")}>
             Donate
           </p>
-          <p className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500">
+          <p className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500" onClick={() => navigate("/about")}>
             About
           </p>
         </div>
         <div className="top w-4/5 h-3/5 flex items-center flex-col">
-          <h1 className="text-white flex items-center font-normal  uppercase text-9xl text-center h-full">
+          <h1 className="text-white flex items-center font-normal  uppercase md:text-9xl text-7xl text-center h-full">
             Global Kids Care
           </h1>
           

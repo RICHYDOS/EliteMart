@@ -20,6 +20,9 @@ import image4 from "./image4.jpg"
 import logo from "./logo.png"
 import pic from "./volunteer.jpg"
 import google from "./google.jpg"
+import donation from "./donation.jpg"
+import donationBlur from "./donationBlur.jpg"
+
 
 export {
   exports,
@@ -44,4 +47,6 @@ export {
   logo,
   pic,
   google,
+  donation,
+  donationBlur,
 };
