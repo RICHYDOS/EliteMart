@@ -24,12 +24,12 @@ const Landing = () => {
   const [num, setNum] = useState(30250);
 
   return (
-    <div className="w-full flex flex-col h-fit">
+    <div className="w-full flex flex-col h-fit overflow-hidden">
       <div className="bg-primary h-screen flex flex-col items-center justify-center gap-10">
         <div className="w-4/5 h-10 flex items-center justify-center gap-8 z-10 text-white text-[22px]">
           <p
             className="hover:border-b-white hover:border-b-2 cursor-pointer transition duration-500"
-            onClick={() => navigate("/volunteer")}
+            onClick={() => navigate("/access")}
           >
             Volunteer
           </p>
@@ -63,7 +63,7 @@ const Landing = () => {
             offer a helping hand to those who need it most.
           </p>
         </div>
-        <StarsCanvas />
+        <StarsCanvas color="#fff" />
       </div>
       <motion.section
         variants={staggerContainer()}
@@ -85,7 +85,7 @@ const Landing = () => {
               for these young souls.
             </p>
           </div>
-          <button className="p-3 text-white bg-black rounded-lg hover:bg-slate-600 text-xl sm:w-fit w-4/5" onClick={() => navigate("/volunteer")}>
+          <button className="p-3 text-white bg-black rounded-lg hover:bg-slate-600 text-xl sm:w-fit w-4/5" onClick={() => navigate("/access")}>
             Volunteer Now
           </button>
         </motion.div>

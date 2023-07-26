@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DataProvider from "./dataContext"
-import { Landing, Access, Volunteer, Error } from "./pages";
+import { Landing, Access, Error } from "./pages";
 
 function App() {
   return (
@@ -9,7 +9,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/access" element={<Access />} />
-          <Route path="/volunteer" element={<Volunteer />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </DataProvider>

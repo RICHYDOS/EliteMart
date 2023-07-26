@@ -31,7 +31,7 @@ module.exports = {
         ss: "280px",
       },
       backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
+        "access-pattern": "url('/src/assets/volunteer.jpg')",
       },
     },
   },

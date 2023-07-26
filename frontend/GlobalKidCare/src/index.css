@@ -18,13 +18,19 @@
 .input-text {
   box-sizing: border-box;
   height: 50px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #28AEA3;
   border-radius: 7px;
   padding: 10px;
   margin: 10px 0px 20px 0px;
   background-color: white;
   color: black;
+  outline: #28AEA3;
 }
+
+.input-text::placeholder{
+  color: #28AEA3;
+}
+
 
 label {
   font-weight: 400;
@@ -36,15 +42,15 @@ label {
 .btn {
   width: 70%;
   height: 45px;
-  background: #133b5c;
+  background: #28AEA3;
   color: #ffffff;
-  border: 2px solid #133b5c;
+  border: 2px solid #28AEA3;
   border-radius: 7px;
 }
 
 .btn:hover {
   background: #ffffff;
-  color: #133b5c;
+  color: #28AEA3;
   transition: all 0.2s ease;
 }
 
