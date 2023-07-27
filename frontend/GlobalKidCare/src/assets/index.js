@@ -13,6 +13,10 @@ import flavor1 from "./flavor1.webp";
 import flavor2 from "./flavor2.webp";
 import flavor3 from "./flavor3.webp";
 import flavor4 from "./flavor4.webp";
+import flavor1Fruit from "./flavor1Fruit.webp"
+import flavor2Fruit from "./flavor2Fruit.webp"
+import flavor3Fruit from "./flavor3Fruit.webp"
+import flavor4Fruit from "./flavor4Fruit.webp"
 import logo from "./logo.webp";
 
 
@@ -32,5 +36,9 @@ export {
   flavor2,
   flavor3,
   flavor4,
+  flavor1Fruit,
+  flavor2Fruit,
+  flavor3Fruit,
+  flavor4Fruit,
   logo
 };

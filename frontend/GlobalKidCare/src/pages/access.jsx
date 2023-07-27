@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form } from "./accessComponent";
 import { Alert } from "./mainComponent";
-import { StarsCanvas } from "../canvas";
+
 const Access = () => {
   const [message, setMessage] = useState({
     value: "",
@@ -17,7 +17,6 @@ const Access = () => {
         } w-full min-h-screen bg-secondary flex items-center justify-center relative z-0 p-5`}
       >
         <Form setMsg={setMessage} msg={message} allow={allow} setAllow={setAllow} />
-        <StarsCanvas color="#23202b" />
       </div>
       <Alert msg={message} setMsg={setMessage} />
     </div>

@@ -29,7 +29,10 @@ module.exports = {
         ss: "280px",
       },
       backgroundImage: {
-        "access-pattern": "url('/src/assets/volunteer.jpg')",  
+        "pattern-1": "linear-gradient(135deg, rgba(106,26,20,1) 0%, rgba(169,99,43,1) 65%);",
+        "pattern-2": "linear-gradient(135deg, rgba(49,86,49,1) 0%, rgba(81,174,165,1) 85%);",
+        "pattern-3": "linear-gradient(135deg, rgba(59,73,32,1) 15%, rgba(228,100,53,1) 85%);",
+        "pattern-4": "linear-gradient(135deg, rgba(92,56,132,1) 20%, rgba(165,51,82,1) 90%);",
       },
     },
   },
