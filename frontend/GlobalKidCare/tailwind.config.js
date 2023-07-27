@@ -13,8 +13,6 @@ module.exports = {
       colors: {
         primary: "#586F7C",
         secondary: "#f2f2f2",
-        tertiary: "#27ae60",
-        quartiary: "#133b5c",
         txtColor: "#14181c",
         "black-100": "#100d25",
         "black-200": "#090325",
@@ -31,10 +29,7 @@ module.exports = {
         ss: "280px",
       },
       backgroundImage: {
-        "access-pattern": "url('/src/assets/volunteer.jpg')",
-        "donation-pattern": "url('/src/assets/donationBlur.jpg')",
-        "donation-2-pattern": "url('/src/assets/donation.jpg')",
-        
+        "access-pattern": "url('/src/assets/volunteer.jpg')",  
       },
     },
   },
