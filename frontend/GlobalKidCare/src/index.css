@@ -18,17 +18,17 @@ body {
 .input-text {
   box-sizing: border-box;
   height: 50px;
-  border: 1px solid #28AEA3;
+  border: 1px solid #f65151;
   border-radius: 7px;
   padding: 10px;
   margin: 10px 0px 20px 0px;
   background-color: white;
   color: black;
-  outline: #28AEA3;
+  outline: #f65151;
 }
 
 .input-text::placeholder{
-  color: #28AEA3;
+  color: #f65151;
 }
 
 
@@ -42,15 +42,15 @@ label {
 .btn {
   width: 70%;
   height: 45px;
-  background: #28AEA3;
+  background: #f65151;
   color: #ffffff;
-  border: 2px solid #28AEA3;
+  border: 2px solid #f65151;
   border-radius: 7px;
 }
 
 .btn:hover {
   background: #ffffff;
-  color: #28AEA3;
+  color: #f65151;
   transition: all 0.2s ease;
 }
 

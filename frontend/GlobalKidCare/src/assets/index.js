@@ -8,7 +8,7 @@ import setting1 from "./settings.svg";
 import signout from "./signout.svg";
 import twitter from "./twitter.svg";
 import user1 from "./userFilled.svg";
-import google from "./google.jpg"
+import google from "./google.svg"
 import flavor1 from "./flavor1.webp";
 import flavor2 from "./flavor2.webp";
 import flavor3 from "./flavor3.webp";
@@ -18,6 +18,7 @@ import flavor2Fruit from "./flavor2Fruit.webp"
 import flavor3Fruit from "./flavor3Fruit.webp"
 import flavor4Fruit from "./flavor4Fruit.webp"
 import logo from "./logo.webp";
+import accessVideo from "./accessVideo.mp4"
 
 
 export {
@@ -40,5 +41,6 @@ export {
   flavor2Fruit,
   flavor3Fruit,
   flavor4Fruit,
-  logo
+  logo,
+  accessVideo,
 };
