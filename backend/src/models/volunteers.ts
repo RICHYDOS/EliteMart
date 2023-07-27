@@ -6,18 +6,20 @@ export interface volunteerInput {
     password: string;
 }
 
-const volunteer: Schema = new Schema({
+const volunteer: Schema = new Schema<volunteerInput>({
     email: {
         type: String,
-        required:[true, "Please add the contact Email Address"]
+        required: true
     },
     password: {
         type: String,
-        required: [true, "Please Enter the Password"]
+        required: true
     }
 }, {timestamps: true});
 
-export const Volunteer = model("Volunteers", volunteer);
+interface VolunteerModel extends volunteerInput, Document {}
+
+export const Volunteer = model<VolunteerModel>("Volunteers", volunteer);
 
 export function validate(volunteer: volunteerInput) {
     const schema = Joi.object({
