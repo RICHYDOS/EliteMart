@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import users from "./routes/users";
+import documentation from "./routes/documentation";
 import carts from "./routes/cart";
 import errorHandler from "./middleware/errorHandler";
 import cors from "cors";
@@ -22,9 +23,9 @@ const connectDb = async (): Promise<void> => {
 
 connectDb();
 const port = setting.port || 5000;
-
 app.use(cors());
 app.use(express.json());
+app.use("/api", documentation);
 app.use("/api/user", users);
 app.use("/api/cart", carts);
 app.use(errorHandler);
